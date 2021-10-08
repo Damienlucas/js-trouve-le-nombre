@@ -48,8 +48,9 @@ const play = () => {
         if(valeurInput === randomNumber){
             body.style.backgroundImage = bgWin;
             message.textContent = `BRAVO !!! Le nombre était bien ${randomNumber}`;
-            // pour écrire `` il faut faire touche Alt gr et touche 7 (des bac tits)=> pour écrire un texte dynamique avec des valeurs qui changent (ajouter des variables dynamiquement avec aussi ${})
+            // pour écrire `` il faut faire touche Alt gr et touche 7 (des back ticks)=> pour écrire un texte dynamique avec des valeurs qui changent (ajouter des variables dynamiquement avec aussi ${})
             rejouerBtn.style.display = "block";
+            essayerBtn.setAttribute("disabled", "");
         }
 
         if(valeurInput !== randomNumber){
@@ -105,5 +106,11 @@ const play = () => {
         })
     }
     actualiseCoeurs(vies);
+    rejouerBtn.addEventListener('click', () => {
+        message.style.display = 'none';
+        // des fois il peut y avoir un temps de latence à la disparition du message donc par securite on lui dit disparait
+        document.location.reload(true);
+        // la on lui demande de relancer la page donc redemarrage du jeu
+    })
 }
 play();
