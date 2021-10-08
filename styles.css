@@ -1,8 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+:root{
+    --title: #f8c27a;
+    --texShadow: 0 2px 2px rgba(0,0,0, .7);
+    --boxShadow: 0 0px 10px rgba(0,0,0, .2);
+}
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
-:root{
-    --title: #f8c27a;
-    
+body{
+    font-size: 14px;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+}
+.container{
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: var(--boxShadow);
+
+}
+h1{
+    font-family: 'Luckiest Guy', cursive;
+    margin-bottom: 15px;
+    color: #ffc31d;
+    text-shadow: var(--texShadow);
+    display: inline-block;
+}
+.vies{
+    margin: 10px;
+}
+/* ----------------permet de styliser les icones prises sur ionicons------------------------  */
+/* ------------ATTENTION ca ecrit en bleu mais ce n'est pas une erreur et ce n'est pas une classe----------- */
+ion-icon{
+    font-size: 50px;
+    /* ------------fill permet de changer les couleurs car on prend le plein----------- */
+    fill: red;
+}
+#inputBox{
+    border-color: #96e6a1;
+    padding: 15px;
+    border-radius: 5px;
+}
+#inputBox > label{
+    display: block;
+    margin-bottom: 8px;
+}
+input, button{
+    /* ---on enleve la bordure et la surbordure mises par default--- */
+    outline: none;
+    border: none;
+    padding: 3px 20px;
+    border-radius: 5px;
+
+}
+button{
+    background-color: teal;
+    color: #ffffff;
+    /* -------transforme le curseur en main------------ */
+    cursor: pointer;
+    transition: all 0.2s;
+}
+button:hover{
+    transform: translateY(-2px);
+    background-color: rgb(0, 184,184);
+}
+#message{
+    margin: 20px auto 0 auto;
+}
+#rejouer{
+    display: none;
+    margin: 5px auto 0 auto;
+}
+#details{
+    font-weight: bold;
+    font-size: 6px;
+    margin-top: 5px;
 }
