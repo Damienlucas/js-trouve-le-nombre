@@ -7,6 +7,13 @@ const essayerBtn = document.getElementById("essayerBtn");
 const rejouerBtn = document.getElementById("rejouerBtn");
 const body = document.getElementsByTagName("body")[0];
 const nombreEssais = document.getElementById("nombreEssais");
+const facile = document.getElementById("facile");
+const moyen = document.getElementById("moyen");
+const difficile = document.getElementById("difficile");
+const trouve = document.getElementById("trouve");
+const choix = document.getElementById("choix");
+const annulerBtn = document.getElementById("annulerBtn");
+
 // comme on veut le body et pas les autres on appelle le premier element du tableau donc [0]
 
 // Mdèle de coeurs
@@ -22,15 +29,39 @@ const bgBrulant = 'linear-gradient(to top, #ff0844 0%, #ffb199 100%)';
 const bgWin = 'linear-gradient(-225deg, #231557 0%, #44107A 29%,  #FF1361 67%, #FFF800 100%)';
 const bgLoose = 'linear-gradient(60deg, #29323c 0%, #485563 100%)';
 
+function option (){
+    facile.addEventListener('click', () => {
+    choix.style.display = "none";
+    trouve.style.display = "block";
+    var choixDifficulte = 9;
+    play(choixDifficulte);
+})   
+    moyen.addEventListener('click', () => {
+        choix.style.display = "none";
+        trouve.style.display = "block";
+        var choixDifficulte = 5;
+        play(choixDifficulte);
+    })
+    difficile.addEventListener('click', () => {
+        choix.style.display = "none";
+        trouve.style.display = "block";
+        var choixDifficulte = 3;
+        play(choixDifficulte);
+})
+}
+option();
 // Play : 
-const play = () => {
+const play = (choixDifficulte) => {
     // c'est une fonction fléchée
-
+    annulerBtn.addEventListener('click', () => {
+        document.location.reload(true);
+    })
+    
     // nombre aléatoire
     const randomNumber = Math.floor(Math.random() *101);
     // Math.random() va créé un nombre aléatoire entre 0 et 1 (1 étant exclu, on aura au maximum 0.99999)   vu qu'on veut un nombre entre 1 et 100  on va multiplier par 101 (101 pour avoir 100)
     // Math.floor va prendre le resultat de la multiplication et l'arrondir au nombre entier inférieur
-    const totalVies = 5;
+    const totalVies = choixDifficulte;
     // constante car c'est le nombre de vies qu'on a au départ donc toujours le même
     let vies = totalVies;
     // cette variable c'est le nombre de vies au cours du jeu
@@ -116,4 +147,4 @@ const play = () => {
         // la on lui demande de relancer la page donc redemarrage du jeu
     })
 }
-play();
+// play();

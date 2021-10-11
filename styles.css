@@ -26,7 +26,22 @@ body{
     border-radius: 5px;
     text-align: center;
     box-shadow: var(--boxShadow);
-
+}
+#trouve{
+    display: none;
+}
+#choix{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.div-button{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
 }
 h1{
     font-family: 'Luckiest Guy', cursive;
