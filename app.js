@@ -10,15 +10,18 @@ const nombreEssais = document.getElementById("nombreEssais");
 const facile = document.getElementById("facile");
 const moyen = document.getElementById("moyen");
 const difficile = document.getElementById("difficile");
-const trouve = document.getElementById("trouve");
+const boxJeu = document.getElementById("box-jeu");
 const choix = document.getElementById("choix");
 const annulerBtn = document.getElementById("annulerBtn");
+const listeNombreP = document.getElementById("liste-nombre-p");
 
 // comme on veut le body et pas les autres on appelle le premier element du tableau donc [0]
 
 // Mdèle de coeurs
 const coeurVide = '<ion-icon name="heart-outline"></ion-icon>';
 const coeurPlein = '<ion-icon name="heart"></ion-icon>';
+
+let valeurInput;
 
 // Fond
 const bgFroid = 'linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)';
@@ -32,22 +35,22 @@ const bgLoose = 'linear-gradient(60deg, #29323c 0%, #485563 100%)';
 function option (){
     facile.addEventListener('click', () => {
     choix.style.display = "none";
-    trouve.style.display = "block";
+    boxJeu.style.display = "block";
     var choixDifficulte = 9;
     play(choixDifficulte);
-})   
+    })   
     moyen.addEventListener('click', () => {
         choix.style.display = "none";
-        trouve.style.display = "block";
+        boxJeu.style.display = "block";
         var choixDifficulte = 5;
         play(choixDifficulte);
     })
     difficile.addEventListener('click', () => {
         choix.style.display = "none";
-        trouve.style.display = "block";
+        boxJeu.style.display = "block";
         var choixDifficulte = 3;
         play(choixDifficulte);
-})
+    })
 }
 option();
 // Play : 
@@ -56,7 +59,7 @@ const play = (choixDifficulte) => {
     annulerBtn.addEventListener('click', () => {
         document.location.reload(true);
     })
-    
+
     // nombre aléatoire
     const randomNumber = Math.floor(Math.random() *101);
     // Math.random() va créé un nombre aléatoire entre 0 et 1 (1 étant exclu, on aura au maximum 0.99999)   vu qu'on veut un nombre entre 1 et 100  on va multiplier par 101 (101 pour avoir 100)
@@ -73,7 +76,7 @@ const play = (choixDifficulte) => {
         // on rappelle le formulaire qui va se declencher à partir d'une certaine action .addEventListener  => ici l'action sera "submit" donc quand le formulaire sera envoyé   on va lui demander d'executer une fonction qui se deroulera sur e que l'on va donc mettre comme parametre dans la fonction que l'on veut executer qui aura pour action ce qui sera après la fleche
         e.preventDefault();
         // quand un formulaire est envoye ca implique une requete au serveur et donc un rechargement de la page. Mais la on veut pas sinon ca va relancer le jeu donc on tape preventDefault sur l'element dont depend le formulaire donc ici e
-        const valeurInput = parseInt(input.value);
+        valeurInput = parseInt(input.value);
         // la on recupere la valeur de l'input
         if(valeurInput <0 || valeurInput > 100) return;
 
@@ -83,6 +86,7 @@ const play = (choixDifficulte) => {
             // pour écrire `` il faut faire touche Alt gr et touche 7 (des back ticks)=> pour écrire un texte dynamique avec des valeurs qui changent (ajouter des variables dynamiquement avec aussi ${})
             rejouerBtn.style.display = "block";
             essayerBtn.setAttribute("disabled", "");
+            annulerBtn.style.display = "none";
         }
 
         if(valeurInput !== randomNumber){
@@ -108,6 +112,7 @@ const play = (choixDifficulte) => {
             verifyLoose();
         }
         actualiseCoeurs(vies);
+        nombreSaisis(valeurInput); 
     })
     const verifyLoose = () => {
         if(vies === 0){
@@ -118,6 +123,7 @@ const play = (choixDifficulte) => {
             message.textContent = `Vous avez perdu. La réponse était ${randomNumber}`;
             rejouerBtn.style.display = "block";
             essayerBtn.style.display = "none";
+            annulerBtn.style.display = "none";
         }
     }
     const actualiseCoeurs = (vies) => {
@@ -148,3 +154,12 @@ const play = (choixDifficulte) => {
     })
 }
 // play();
+function nombreSaisis(valeurInput){
+    let tableauNombreSaisis = [];
+    for(let i = 0; i < 1; i++){
+        tableauNombreSaisis.push("😪 "+valeurInput+" ");
+    } 
+    tableauNombreSaisis.forEach(valeur => {
+        listeNombreP.innerHTML += valeur;
+    })
+}

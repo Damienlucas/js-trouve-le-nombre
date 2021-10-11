@@ -27,7 +27,7 @@ body{
     text-align: center;
     box-shadow: var(--boxShadow);
 }
-#trouve{
+#box-jeu{
     display: none;
 }
 #choix{
@@ -43,6 +43,9 @@ body{
     align-items: center;
     margin-bottom: 20px;
 }
+#liste-nombre{
+    margin-top: 30px;
+}
 h1{
     font-family: 'Luckiest Guy', cursive;
     margin-bottom: 15px;
@@ -56,6 +59,14 @@ p, .vies, label, button, input{
 }
 .vies{
     margin: 10px;
+}
+h2{
+    font-family: 'Luckiest Guy', cursive;
+    margin-bottom: 15px;
+    color: #ffc31d;
+    text-shadow: var(--texShadow);
+    display: inline-block;
+    font-size: 1.3rem;
 }
 /* ----------------permet de styliser les icones prises sur ionicons------------------------  */
 /* ------------ATTENTION ca ecrit en bleu mais ce n'est pas une erreur et ce n'est pas une classe----------- */
@@ -119,6 +130,10 @@ button:hover{
     #details{
         font-size: 0.7rem;
     }
+    h2{
+        font-size: 1.9rem;
+        margin-bottom: 30px;
+    }
 }
 @media(min-width: 1400px){
     .container{
@@ -129,6 +144,9 @@ button:hover{
         margin-top: 10px;
     }
     h1{
+        font-size: 3rem;
+    }
+    h2{
         font-size: 3rem;
     }
     p, .vies, label, button, input{
