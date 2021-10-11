@@ -12,8 +12,11 @@ const moyen = document.getElementById("moyen");
 const difficile = document.getElementById("difficile");
 const boxJeu = document.getElementById("box-jeu");
 const choix = document.getElementById("choix");
-const annulerBtn = document.getElementById("annulerBtn");
+const niveauBtn = document.getElementById("niveauBtn");
 const listeNombreP = document.getElementById("liste-nombre-p");
+const spanFacile = document.getElementById("span-facile");
+const spanMoyen = document.getElementById("span-moyen");
+const spanDifficile = document.getElementById("span-difficile");
 
 // comme on veut le body et pas les autres on appelle le premier element du tableau donc [0]
 
@@ -36,18 +39,21 @@ function option (){
     facile.addEventListener('click', () => {
     choix.style.display = "none";
     boxJeu.style.display = "block";
+    spanFacile.style.display = "block";
     var choixDifficulte = 9;
     play(choixDifficulte);
     })   
     moyen.addEventListener('click', () => {
         choix.style.display = "none";
         boxJeu.style.display = "block";
+        spanMoyen.style.display = "block";
         var choixDifficulte = 5;
         play(choixDifficulte);
     })
     difficile.addEventListener('click', () => {
         choix.style.display = "none";
         boxJeu.style.display = "block";
+        spanDifficile.style.display = "block";
         var choixDifficulte = 3;
         play(choixDifficulte);
     })
@@ -56,7 +62,7 @@ option();
 // Play : 
 const play = (choixDifficulte) => {
     // c'est une fonction fléchée
-    annulerBtn.addEventListener('click', () => {
+    niveauBtn.addEventListener('click', () => {
         document.location.reload(true);
     })
 

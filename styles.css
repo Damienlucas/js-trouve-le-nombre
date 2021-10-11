@@ -30,6 +30,15 @@ body{
 #box-jeu{
     display: none;
 }
+#box-jeu-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#box-jeu-div-div{
+    margin-bottom: 25px;
+}
 #choix{
     display: flex;
     flex-direction: column;
@@ -68,21 +77,57 @@ h2{
     display: inline-block;
     font-size: 1.3rem;
 }
+h3{
+    font-family: 'Luckiest Guy', cursive;
+    color: #ffc31d;
+    display: inline-block;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+h4{
+    font-family: 'Luckiest Guy', cursive;
+    color: #ffc31d;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+#span-facile, #span-moyen, #span-difficile{
+    padding: 3px 20px;
+    border-radius: 5px;
+    display: none;
+    font-size: 0.7rem;
+}
+#span-facile{
+    background-color: blue;
+    color: white;
+}
+#span-moyen{
+    background-color: orange;
+    color: white;
+}
+#span-difficile{
+    background-color: red;
+    color: white;
+}
+#div-difficulte{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
 /* ----------------permet de styliser les icones prises sur ionicons------------------------  */
 /* ------------ATTENTION ca ecrit en bleu mais ce n'est pas une erreur et ce n'est pas une classe----------- */
 ion-icon{
-    font-size: 35px;
+    font-size: 25px;
     /* ------------fill permet de changer les couleurs car on prend le plein----------- */
     fill: red;
 }
 #inputBox{
     border-color: #96e6a1;
-    padding: 15px;
+    padding: 15px 0 0 0;
     border-radius: 5px;
 }
 #inputBox > label{
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 input, button{
     /* ---on enleve la bordure et la surbordure mises par default--- */
@@ -114,6 +159,7 @@ button:hover{
     font-weight: bold;
     font-size: 0.5rem;
     margin-top: 5px;
+    margin-bottom: 15px;
 }
 /* ---------------------------media querry--------------------------- */
 @media(min-width: 768px){
@@ -127,12 +173,32 @@ button:hover{
     p, .vies, label, button, input{
         font-size: 1.2rem;
     }
+    #span-facile, #span-moyen, #span-difficile{
+        font-size: 1.2rem;
+    }
     #details{
         font-size: 0.7rem;
     }
     h2{
         font-size: 1.9rem;
         margin-bottom: 30px;
+    }
+    h3{
+        font-size: 1.5rem;
+    }
+    h4{
+        font-size: 1.3rem;
+    }
+}
+@media(min-width: 992px){
+    #box-jeu-div{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    #box-jeu-div-div{
+        margin-right: 25px;
     }
 }
 @media(min-width: 1400px){
@@ -149,7 +215,16 @@ button:hover{
     h2{
         font-size: 3rem;
     }
+    h3{
+        font-size: 2.2rem;
+    }
+    h4{
+        font-size: 1.9rem;
+    }
     p, .vies, label, button, input{
+        font-size: 1.5rem;
+    }
+    #span-facile, #span-moyen, #span-difficile{
         font-size: 1.5rem;
     }
     #details{
