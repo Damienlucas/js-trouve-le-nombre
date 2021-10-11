@@ -6,6 +6,7 @@ const input = document.getElementById("number");
 const essayerBtn = document.getElementById("essayerBtn");
 const rejouerBtn = document.getElementById("rejouerBtn");
 const body = document.getElementsByTagName("body")[0];
+const nombreEssais = document.getElementById("nombreEssais");
 // comme on veut le body et pas les autres on appelle le premier element du tableau donc [0]
 
 // Mdèle de coeurs
@@ -85,6 +86,7 @@ const play = () => {
             // comme le joueur a perdu il faut desactiver le bouton donc on lui dit .setAttribute le premier attribut qu on lui donne est le nom de l attribut  ici disabled pour desactive   et le second la valeur  ici rien puisque desactive
             message.textContent = `Vous avez perdu. La réponse était ${randomNumber}`;
             rejouerBtn.style.display = "block";
+            essayerBtn.style.display = "none";
         }
     }
     const actualiseCoeurs = (vies) => {
@@ -103,6 +105,7 @@ const play = () => {
         tableauDeVies.forEach(coeur => {
             // pour mettre chaque element de notre tableau dans notre HTML
             divVies.innerHTML += coeur;
+            nombreEssais.textContent = `Trouve le bon nombre entre 0 et 100. Tu as ${vies} essais !`;
         })
     }
     actualiseCoeurs(vies);
