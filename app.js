@@ -1,3 +1,54 @@
+// ----------------------------------dark-theme-----------------------
+const iconMoon = document.getElementById("icon-moon");
+const iconSun = document.getElementById("icon-sun");
+const icon = document.getElementById("icon");
+
+
+icon.onclick = function (){
+    document.body.classList.toggle("dark-theme");
+    if(document.body.classList.contains("dark-theme")){
+        iconSun.style.display = "block";
+        iconMoon.style.display = "none";
+    }
+    else{
+        iconSun.style.display = "none";
+        iconMoon.style.display = "block";
+    }
+}
+// -------------------------------explosion confettis-----------------------------
+const containerSlot = document.querySelector('.slot');
+const emojis = ["⭐", "🌟", "🌠", "🏆"];
+
+function fiesta(){
+
+    if(isTweening()) return;
+
+    for(let i = 0; i < 200; i++){
+        const confetti = document.createElement('div');
+        confetti.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        containerSlot.appendChild(confetti);
+    }
+    animateConfettis();
+}
+function animateConfettis(){
+    const TLCONF = gsap.timeline();
+    TLCONF
+    .to('.slot div', { 
+        y: "random(-300,300)",
+        x: "random(-300,300)",
+        z: "random(0,1000)",
+        rotation: "random(-90,90)",
+        duration: 2,
+    })
+    .to('.slot div', {autoAlpha: 0, duration: 0.4}, '-=0.2')
+    .add(() => {
+        containerSlot.innerHTML = "";
+    })
+}
+function isTweening(){
+    return gsap.isTweening('.slot div');
+}
+// -----------------------------------------jeu------------------------------------
 // Elements du DOM
 const divVies = document.querySelector(".vies");
 const message = document.getElementById("message");
@@ -65,7 +116,6 @@ const play = (choixDifficulte) => {
     niveauBtn.addEventListener('click', () => {
         document.location.reload(true);
     })
-
     // nombre aléatoire
     const randomNumber = Math.floor(Math.random() *101);
     // Math.random() va créé un nombre aléatoire entre 0 et 1 (1 étant exclu, on aura au maximum 0.99999)   vu qu'on veut un nombre entre 1 et 100  on va multiplier par 101 (101 pour avoir 100)
@@ -88,30 +138,30 @@ const play = (choixDifficulte) => {
 
         if(valeurInput === randomNumber){
             body.style.backgroundImage = bgWin;
-            message.textContent = `BRAVO !!! Le nombre était bien ${randomNumber}`;
+            message.textContent = `BRAVO !!! 🥂 Le nombre était bien ${randomNumber}`;
             // pour écrire `` il faut faire touche Alt gr et touche 7 (des back ticks)=> pour écrire un texte dynamique avec des valeurs qui changent (ajouter des variables dynamiquement avec aussi ${})
             rejouerBtn.style.display = "block";
             essayerBtn.setAttribute("disabled", "");
-            annulerBtn.style.display = "none";
+            fiesta();
         }
 
         if(valeurInput !== randomNumber){
             if(randomNumber < valeurInput + 3 && randomNumber > valeurInput -3){
                 body.style.backgroundImage = bgBrulant;
-                message.textContent = "C'est Brûlant !!! 🔥🔥🔥 ";
+                message.textContent = "C'est Brûlant !!! 🔥🔥🔥 🥵 ";
                 // pour integrer une emoji  on installe l extension emojisense une fois installee dans visual studio  quand on veut mettre une icone on tape ctrl + i  ca ouvre une fenetre et on tape ce qu on veut
             }
             else if(randomNumber < valeurInput + 6 && randomNumber > valeurInput -6){
                 body.style.backgroundImage = bgChaud;
-                message.textContent = "C'est Chaud ! 🔥 ";
+                message.textContent = "C'est Chaud ! 🔥 🥵 ";
             }
             else if(randomNumber < valeurInput + 11 && randomNumber > valeurInput -11){
                 body.style.backgroundImage = bgTiede;
-                message.textContent = "C'est Tiède 😐 ";
+                message.textContent = "C'est Tiède 🌡️ 🤒 ";
             }
             else{
                 body.style.backgroundImage = bgFroid;
-                message.textContent = "C'est Froid ❄️ ";
+                message.textContent = "C'est Froid ☃️ 🧊 🥶 ";
             }
             vies--;
             // on enlève un à la variable vies
@@ -129,7 +179,6 @@ const play = (choixDifficulte) => {
             message.textContent = `Vous avez perdu. La réponse était ${randomNumber}`;
             rejouerBtn.style.display = "block";
             essayerBtn.style.display = "none";
-            annulerBtn.style.display = "none";
         }
     }
     const actualiseCoeurs = (vies) => {
@@ -148,7 +197,7 @@ const play = (choixDifficulte) => {
         tableauDeVies.forEach(coeur => {
             // pour mettre chaque element de notre tableau dans notre HTML
             divVies.innerHTML += coeur;
-            nombreEssais.textContent = `Trouve le bon nombre entre 0 et 100. Tu as ${vies} essais !`;
+            nombreEssais.textContent = `Trouvez le bon nombre entre 0 et 100. Vous avez ${vies} essais !`;
         })
     }
     actualiseCoeurs(vies);

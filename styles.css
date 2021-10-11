@@ -3,6 +3,15 @@
     --title: #f8c27a;
     --texShadow: 0 2px 2px rgba(0,0,0, .7);
     --boxShadow: 0 0px 10px rgba(0,0,0, .2);
+    --primary-color: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);;
+    --secondary-color: black;
+}
+.dark-theme{
+    --title: #f8c27a;
+    --texShadow: 0 2px 2px rgba(99, 93, 93, 0.7);
+    --boxShadow: 0 0px 10px rgba(252, 248, 248, 0.959);
+    --primary-color: linear-gradient(120deg, #383a34 0%, #81a085 100%);;
+    --secondary-color: white;
 }
 * {
     margin: 0;
@@ -18,11 +27,11 @@ body{
     justify-content: center;
     align-items: center;
     font-family: sans-serif;
-    background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+    background-image: var(--primary-color);
 }
 .container{
     background-color: rgba(255, 255, 255, 0.2);
-    padding: 20px;
+    padding: 10px;
     border-radius: 5px;
     text-align: center;
     box-shadow: var(--boxShadow);
@@ -112,6 +121,10 @@ h4{
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-bottom: 15px;
+}
+#h4-difficulte{
+    margin-bottom: 0;
 }
 /* ----------------permet de styliser les icones prises sur ionicons------------------------  */
 /* ------------ATTENTION ca ecrit en bleu mais ce n'est pas une erreur et ce n'est pas une classe----------- */
@@ -133,7 +146,7 @@ input, button{
     /* ---on enleve la bordure et la surbordure mises par default--- */
     outline: none;
     border: none;
-    padding: 3px 20px;
+    padding: 5px 10px;
     border-radius: 5px;
 
 }
@@ -160,6 +173,47 @@ button:hover{
     font-size: 0.5rem;
     margin-top: 5px;
     margin-bottom: 15px;
+}
+/* -------------------------------mode dark-------------------------- */
+#icon{
+    position: fixed;
+    top: 10px;
+    right: 5px;
+    margin-right: 10px;
+}
+#icon-sun, #icon-moon{
+    border-radius: 5px;
+    padding: 10px;
+    border: 3px solid var(--secondary-color);
+    font-size: 25px;
+}
+#icon-sun{
+    fill: var(--secondary-color);
+    display: none;
+}
+#icon-moon{
+    fill: var(--secondary-color);
+}
+/* -------------------------------explosion confettis---------------- */
+.confettis{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.slot{
+    position: relative;
+    perspective: 1000px;
+}
+.slot div{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
 }
 /* ---------------------------media querry--------------------------- */
 @media(min-width: 768px){
