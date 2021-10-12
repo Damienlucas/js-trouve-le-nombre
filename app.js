@@ -9,10 +9,22 @@ icon.onclick = function (){
     if(document.body.classList.contains("dark-theme")){
         iconSun.style.display = "block";
         iconMoon.style.display = "none";
+        bgFroid = 'linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%)';
+        bgTiede = 'linear-gradient(to right top, #cbae52, #d7a659, #df9e63, #e4986f, #e5937b)';
+        bgChaud = 'linear-gradient(to right top, #f64c4c, #e35839, #cf6129, #ba681d, #a66c18)';
+        bgBrulant = 'linear-gradient(to right top, #370507, #621216, #90241c, #be3b1c, #eb5612)';
+        bgLoose = 'linear-gradient(to right top, #14191e, #191f25, #1e252c, #232b33, #28313b)';
+        bgWin = 'linear-gradient(to right bottom, #19103d, #38134a, #571353, #770f58, #960b57, #ae174f, #c32b45, #d24238, #da6125, #d98109, #d29f00, #c2bd03)';
     }
     else{
         iconSun.style.display = "none";
         iconMoon.style.display = "block";
+        bgFroid = 'linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)';
+        bgTiede = 'linear-gradient(120deg, #f6d365 0%, #fda085 100%)';
+        bgChaud = 'linear-gradient(to right, #f9d423 0%, #ff4e50 100%)';
+        bgBrulant = 'linear-gradient(to top, #ff0844 0%, #ffb199 100%)';
+        bgLoose = 'linear-gradient(60deg, #29323c 0%, #485563 100%)';
+        bgWin = 'linear-gradient(-225deg, #231557 0%, #44107A 29%,  #FF1361 67%, #FFF800 100%)';
     }
 }
 // -------------------------------explosion confettis-----------------------------
@@ -78,13 +90,13 @@ const coeurPlein = '<ion-icon name="heart"></ion-icon>';
 let valeurInput;
 
 // Fond
-const bgFroid = 'linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)';
-const bgTiede = 'linear-gradient(120deg, #f6d365 0%, #fda085 100%)';
-const bgChaud = 'linear-gradient(-60deg, #ff5858 0%, #f09819 100%)';
-const bgBrulant = 'linear-gradient(to top, #ff0844 0%, #ffb199 100%)';
+var bgFroid = 'linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)';
+var bgTiede = 'linear-gradient(120deg, #f6d365 0%, #fda085 100%)';
+var bgChaud = 'linear-gradient(to right, #f9d423 0%, #ff4e50 100%)';
+var bgBrulant = 'linear-gradient(to top, #ff0844 0%, #ffb199 100%)';
 
-const bgWin = 'linear-gradient(-225deg, #231557 0%, #44107A 29%,  #FF1361 67%, #FFF800 100%)';
-const bgLoose = 'linear-gradient(60deg, #29323c 0%, #485563 100%)';
+var bgWin = 'linear-gradient(-225deg, #231557 0%, #44107A 29%,  #FF1361 67%, #FFF800 100%)';
+var bgLoose = 'linear-gradient(60deg, #29323c 0%, #485563 100%)';
 
 function option (){
     facile.addEventListener('click', () => {
